@@ -16,7 +16,6 @@ def allureVersion = "2.18.1",
     ownerVersion = "1.0.12",
     assertjCoreVersion = "3.23.1"
 
-
 allure {
     report {
         version.set(allureVersion)
@@ -41,27 +40,14 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion",
             "org.aeonbits.owner:owner:$ownerVersion",
+            "org.spockframework:spock-core:2.0-groovy-2.5",
             "org.assertj:assertj-core:$assertjCoreVersion"
 
 
     )
 }
-
-
-tasks.withType(Test) {
-    systemProperties(System.getProperties())
+test {
     useJUnitPlatform()
-
-    testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
-    }
 }
 
-task configuration_tests(type: Test) {
-    useJUnitPlatform {
-        includeTags "configuration_tests"
-    }
-}
+
