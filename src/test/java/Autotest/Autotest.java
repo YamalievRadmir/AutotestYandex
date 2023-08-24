@@ -18,6 +18,7 @@ public class Autotest {
     private WebDriver driver;
     @BeforeEach
     public void startDriver() {
+
         driver = new WebDriverProvider().get();
     }
     @Test
