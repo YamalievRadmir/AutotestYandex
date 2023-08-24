@@ -1,8 +1,9 @@
 package pages;
 
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import com.codeborne.selenide.Selenide;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class Pages {
 
@@ -26,21 +27,10 @@ public class Pages {
     }
 
     public Pages checkResult() {
-        //$(".usermenu-portal_js_inited").click(); //клик иконки
-        $(".headline__personal-item_mail").click(); //клик почты
-        //$(".ns-view-main-action-buttons").shouldBe(Condition.visible);
-
-        //$(".Subname").shouldHave(Condition.text("Test.Testovich1test"));
-        //$("[data-bem='{\"usermenu-portal\":{}}']").click();
-
-
-        //$(".headline__personal-item_mail").click();
-        //(".user-account_has-accent-letter_yes").shouldHave(Condition.text("Test.Testovich1test"));
-
-        //$x("//div[@class='Root']//span[contains(@class, 'UserId-FirstLine')]").should(visible, Duration.ofSeconds(10));;
-        //$x("//div[contains(@class,'Header-Content')]//span[contains(.,'Тест Тестович')]").shouldBe(Condition.visible);
-        //*[contains(@class,'cell-middle-content')]//span[contains(.,'Тест Тестович')].shouldBe(Condition.visible);
-        //$(By.xpath("//a[contains(text(),'Test.Testovich1test')]")).shouldHave(Condition.text("Test.Testovich1test"));
+        $(".usermenu-portal_js_inited").click(); //клик иконки
+        Selenide.switchTo().frame($x("//iframe"));
+        String s =  $x("//div[@class='Root']//span[contains(@class, 'UserId-FirstLine')]").getText();
+        System.out.println(s);
         return this;
     }
 }
