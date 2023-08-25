@@ -1,6 +1,7 @@
 package pages;
 
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -29,7 +30,7 @@ public class Pages {
     public Pages checkResult() {
         $(".usermenu-portal_js_inited").click(); //клик иконки
         Selenide.switchTo().frame($x("//iframe"));
-        String s =  $x("//div[@class='Root']//span[contains(@class, 'UserId-FirstLine')]").getText();
+        String s = String.valueOf($x("//div[@class='Root']//span[contains(@class, 'UserId-FirstLine')]").shouldHave(Condition.text("Тест Тестович")));
         System.out.println(s);
         return this;
     }
